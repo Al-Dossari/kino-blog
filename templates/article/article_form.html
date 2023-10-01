@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title%}
+    Create
+{% endblock title%}
+{% block main%}
+<div class="container">
+    <div class="d-flex justify-content-center  bg-dark border-solid rounded p-2 border border-danger text-light">
+
+        <form method="POST"  enctype="multipart/form-data" >
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-outline-danger" type="submit">
+                 {% if 'update' in request.path %}
+                    Обнавить
+                    {% else %}
+                    Сохранить
+                    {% endif %}
+                </button>
+        </form>
+    </div>
+</div>
+{% endblock main%}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Регистрация{% endblock title %}
+
+{% block main %}
+<div class="container">
+    <div class="col-3">
+        <h2 class="text-center text-light">Регистрация</h2>
+        <div class="d-flex justify-content-center bg-dark border-solid rounded p-2 border border-danger">
+
+            <form method="post" class="text-danger" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-danger text-dark" type="submit">
+                    {% if 'update' in request.path %}
+                    Обнавить
+                    {% else %}
+                    Добавить
+                    {% endif %}
+                </button>
+                <a class="btn btn-success " href="{% url 'index' %}" role="button">Назад</a>
+
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock main %}

@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+{{ article.title }}
+{% endblock title %}
+
+
+{%  block main %}
+<div class="d-flex justify-content-between p-5">
+
+    <div class="col-9">
+
+        <div class="card bg-dark text-light border-danger">
+            <div class="card-header d-flex justify-content-between">
+                <div>
+                    <a class="h4 text-dark navbar-brand" href="">Категория: {{ article.category }}</a>
+                </div>
+
+                <div class="d-flex d-flex justify-content-between">
+                    <a href="{% url 'article_update' article.pk %}" class="btn btn-warning mx-1">Изменить</a>
+                    <a href="{% url 'article_delete' article.pk %}" class="btn btn-danger mx-1">Удалить</a>
+                    <a href="{% url 'index' %}" class="btn btn-success mx-1">Назад</a>
+                </div>
+            </div>
+            {% if article.video %}
+            <div class="d-flex align-items-center">
+                <video class="d-flex content-justify-center p-center" autoplay loop controls muted width="500"
+                       height="600">
+                    <source src="{{article.video.url}}" type="video/mp4"/>
+                </video>
+            </div>
+
+            {% endif %}
+            <div class="card-body">
+
+                <img src="{{article.photo.url}}" alt="" class="card-img-center" width="300" height="450">
+
+                <div class="d-flex d-flex justify-content-between py-4 align-items-center border border-warning">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <img src="{{article.author.photo.url}}"
+                             class="rounded-circle" alt="" width="80" height="80">
+                        <h4>Автор: {{article.author}}</h4>
+                    </div>
+                    <p>{{ article.created_at }}</p>
+
+
+                </div>
+                <h2>{{ article.title }}</h2>
+                <p>{{ article.content }}</p>
+
+            </div>
+            <div class="card-footer">
+                {% include 'comments/comment_list.html' %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Comments-->
+
+
+
+    {% endblock main %}

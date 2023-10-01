@@ -1,0 +1,9 @@
+.block_main{
+    background: url(../images/bg-1.jpg) no-repeat;
+    background-size: cover;
+    min-height: 1000px;
+}
+
+.card-img{
+    height: 100% !important;
+}

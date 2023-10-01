@@ -1,0 +1,22 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="card bg-dark border-solid rounded p-2 border border-danger " style="width: 30rem;">
+            <a href="{% url 'detail' article.pk %}"><img src="{{article.photo.url}}"
+                                                         class="card-image-top pt-2 broder border-danger"
+                                                         alt="{{article.original_name}}"></a>
+            <div class="card-body">
+                <i class="fas fa-play play_button" data-toggle="tooltip" data-placement="bottom" title="Play Trailer">
+                </i>
+                <h5 class="card-title text-light">Название фильма: {{article.title}}</h5>
+                <h5 class="card-title text-light">Original name: {{article.original_name}}</h5>
+                <div class="card-footer">
+                    <span class="movie_info text-light">Год производства: {{article.produce_date.year}}</span>
+                    <br>
+                    <span class="movie_info float-right text-light">Дата создания : {{article.created_at}}</span>
+                    <br>
+                    <span class="movie_info float-right text-light">Автор : {{article.author}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

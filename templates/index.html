@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Kirish
+{% endblock title %}
+
+
+{% block main %}
+
+<div class="container position-relative">
+
+    <div class=""> {% if user.is_authenticated %}
+
+        <div class="d-flex justify-content-between">
+                {% include 'components/_category_nav.html' %}
+
+            <div class="col-8 pt-5">
+                {% for article in articles %}
+
+                {% include 'components/_cards.html'%}
+                {% endfor %}
+
+            </div>
+        </div>
+
+
+        {% else %}
+
+        <div class="col-4">
+            <div class="align-self-center">
+                <h1 class="text-light">Добро пожаловать в Киноманию</h1>
+                <a class="btn btn-success text-light" href="{% url 'login' %}" role="button">Войти</a>
+                <a class="btn btn-warning text-dark" href="{% url 'signup' %}" role="button">Регистратция</a>
+
+            </div>
+
+        </div>
+
+        {% endif %}
+    </div>
+
+</div>
+
+
+{% endblock main %}
